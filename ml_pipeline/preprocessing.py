@@ -21,3 +21,25 @@ def remove_outliers(values: list[float], threshold: float = 2.0) -> list[float]:
     if std == 0:
         return values
     return [v for v in values if abs(v - mean) / std <= threshold]
+
+
+def standard_scale(values: list[float]) -> list[float]:
+    """Apply z-score normalization to a list of values.
+
+    Transforms each value by subtracting the mean and dividing by the
+    standard deviation, resulting in a distribution with mean 0 and
+    standard deviation 1.
+
+    Args:
+        values: List of numeric values to normalize.
+
+    Returns:
+        List of z-score normalized values.
+    """
+    if not values:
+        return []
+    mean = sum(values) / len(values)
+    std = (sum((v - mean) ** 2 for v in values) / len(values)) ** 0.5
+    if std == 0:
+        return [0.0] * len(values)
+    return [(v - mean) / std for v in values]
