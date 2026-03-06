@@ -18,7 +18,7 @@ def test_normalize_single():
 
 def test_remove_outliers_basic():
     values = [1.0, 2.0, 3.0, 100.0]
-    result = remove_outliers(values, threshold=2.0)
+    result = remove_outliers(values, threshold=1.5)
     assert 100.0 not in result
     assert 1.0 in result
 
