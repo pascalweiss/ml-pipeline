@@ -1,0 +1,7 @@
+version: 1
+checks:
+  test: "pytest -v --tb=short"
+  lint: "ruff check ."
+merge_strategy: squash
+context_docs:
+  - "CONTRIBUTING.md"
